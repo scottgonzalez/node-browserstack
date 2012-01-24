@@ -1,6 +1,6 @@
 # node-browserstack
 
-A node.js JavaScript client for working with the [http://browserstack.com](BrowserStack) API.
+A node.js JavaScript client for working with the [BrowserStack](http://browserstack.com) API.
 
 ## Usage
 
