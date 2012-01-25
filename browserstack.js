@@ -67,6 +67,7 @@ extend( Client.prototype, {
 			fn = data;
 			data = null;
 		}
+		fn = fn || function() {};
 
 		var headers = {
 			authorization: this.authHeader
