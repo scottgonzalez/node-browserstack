@@ -45,7 +45,15 @@ Creates a worker.
   * `url` (optional): Which URL to navigate to upon creation.
   * `timeout` (optional): Maximum life of the worker (in seconds). Use 0 for "forever" (BrowserStack will kill the worker after 1,800 seconds).
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
-  * `worker` A hash with an `id` property for the worker that was created.
+  * `worker` An object with an `id` property for the worker that was created.
+
+### client.getWorker( id, callback )
+
+Gets the status of a worker.
+
+* `id`: The id of the worker.
+* `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
+  * `worker`: An object with `id`, `browser`, and `status` properties for the worker.
 
 ### client.terminateWorker( id, callback )
 
@@ -53,7 +61,14 @@ Terminates an active worker.
 
 * `id`: The id of the worker to terminate.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
-  * `data`: A hash with a `time` property indicating how long the worker was alive.
+  * `data`: An object with a `time` property indicating how long the worker was alive.
+
+### client.getWorkers( callback )
+
+Gets the status of all workers.
+
+* `callback` (`function( error, workers )`): A callback to invoke when the API call is complete.
+  * `workers`: An array of objects containing with `id`, `browser`, and `status` properties.
 
 ## License
 

@@ -39,10 +39,22 @@ extend( Client.prototype, {
 		}, data, fn );
 	},
 
+	getWorker: function( id, fn ) {
+		this.request({
+			path: this.path( "/worker/" + id )
+		}, fn );
+	},
+
 	terminateWorker: function( id, fn ) {
 		this.request({
 			path: this.path( "/worker/" + id ),
 			method: "DELETE"
+		}, fn );
+	},
+
+	getWorkers: function( fn ) {
+		this.request({
+			path: this.path( "/workers" )
 		}, fn );
 	},
 
