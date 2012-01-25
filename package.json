@@ -1,0 +1,17 @@
+{
+  "author": "Scott González <scott.gonzalez@gmail.com> (http://scottgonzalez.com)",
+  "name": "browserstack",
+  "description": "A client for working with the BrowserStack API.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/scottgonzalez/node-browserstack",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scottgonzalez/node-browserstack.git"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "main": "browserstack.js"
+}
