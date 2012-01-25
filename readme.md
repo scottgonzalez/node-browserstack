@@ -12,7 +12,7 @@ var client = BrowserStack.createClient({
 });
 
 client.getBrowsers(function( error, browsers ) {
-	console.log( "The following browsers are avaialable for testing" );
+	console.log( "The following browsers are available for testing" );
 	console.log( browsers );
 });
 ```
