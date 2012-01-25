@@ -17,13 +17,14 @@ function Client( settings) {
 		throw new Error( "Password is required." );
 	}
 
-	this._username = settings.username;
-	this._password = settings.password;
-	this._authHeader = "Basic " +
-		new Buffer( this._username + ":" + this._password ).toString( "base64" );
+	extend( this, settings );
+	this.authHeader = "Basic " +
+		new Buffer( this.username + ":" + this.password ).toString( "base64" );
 }
 
 extend( Client.prototype, {
+	version: 1,
+
 	getBrowsers: function( fn ) {
 		this.request({
 			path: this.path( "/browsers" )
@@ -46,7 +47,7 @@ extend( Client.prototype, {
 	},
 
 	path: function( path ) {
-		return "/1" + path;
+		return "/" + this.version + path;
 	},
 
 	request: function( options, data, fn ) {
@@ -56,7 +57,7 @@ extend( Client.prototype, {
 		}
 
 		var headers = {
-			authorization: this._authHeader
+			authorization: this.authHeader
 		};
 		headers[ "content-length" ] = typeof data === "string" ? data.length : 0;
 
