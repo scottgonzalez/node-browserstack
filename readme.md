@@ -2,6 +2,12 @@
 
 A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [API](https://github.com/browserstack/api).
 
+## Installation
+
+```
+npm install browserstack
+```
+
 ## Usage
 
 ```javascript
