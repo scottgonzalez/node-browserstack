@@ -22,16 +22,36 @@ function Client( settings) {
 		new Buffer( this.username + ":" + this.password ).toString( "base64" );
 }
 
+// public API
 extend( Client.prototype, {
+	// BrowserStack API version
 	version: 1,
 
 	getBrowsers: function( fn ) {
 		this.request({
 			path: this.path( "/browsers" )
-		}, fn );
+		}, function( error, browsers ) {
+			if ( !error ) {
+				this.updateLatest( browsers );
+			}
+
+			fn( error, browsers );
+		}.bind( this ) );
 	},
 
 	createWorker: function( options, fn ) {
+		if ( options.version === "latest" ) {
+			return this.getLatest( options.browser, function( error, version ) {
+				if ( error ) {
+					return fn( error );
+				}
+
+				options = extend( {}, options );
+				options.version = version;
+				this.createWorker( options, fn );
+			}.bind( this ) );
+		}
+
 		var data = querystring.stringify( options );
 		this.request({
 			path: this.path( "/worker" ),
@@ -57,6 +77,48 @@ extend( Client.prototype, {
 			path: this.path( "/workers" )
 		}, fn );
 	},
+
+	getLatest: function( browser, fn ) {
+		var latest = this.latest;
+
+		if ( typeof browser === "function" ) {
+			fn = browser;
+			browser = null;
+		}
+
+		// there may be a lot of createWorker() calls with "latest" version
+		// so minimize the number of calls to getBrowsers()
+		if ( this.latestPending ) {
+			return setTimeout(function() {
+				this.getLatest( browser, fn );
+			}.bind( this ), 50 );
+		}
+
+		// only cache browsers for one day
+		if ( !latest || this.latestUpdate < (new Date - 864e5) ) {
+			this.latestPending = true;
+			return this.getBrowsers(function( error ) {
+				this.latestPending = false;
+
+				if ( error ) {
+					return fn( error );
+				}
+
+				this.getLatest( browser, fn );
+			}.bind( this ) );
+		}
+
+		process.nextTick(function() {
+			fn( null, browser ? latest[ browser ] : extend( {}, latest ) );
+		});
+	}
+});
+
+// internal API
+extend( Client.prototype, {
+	latest: null,
+	latestUpdate: 0,
+	latestPending: false,
 
 	path: function( path ) {
 		return "/" + this.version + path;
@@ -107,6 +169,25 @@ extend( Client.prototype, {
 			req.write( data );
 		}
 		req.end();
+	},
+
+	updateLatest: function( browsers ) {
+		var latest = this.latest = {};
+
+		this.latestUpdate = new Date;
+		browsers.forEach(function( browser ) {
+			var version = browser.version;
+
+			// ignore pre-release versions
+			if ( /\s/.test( version ) ) {
+				return;
+			}
+
+			if ( parseFloat( version ) >
+					(parseFloat( latest[ browser.browser ] ) || 0) ) {
+				latest[ browser.browser ] = version;
+			}
+		});
 	}
 });
 

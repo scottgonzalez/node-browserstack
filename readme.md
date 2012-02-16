@@ -34,6 +34,8 @@ Creates a new client instance.
   * `password`: The password for the BrowserStack account.
   * `version` (optional; default: `1`): Which version of the BrowserStack API to use.
 
+*Note: A special value of "latest" is supported for `version`, which will use the latest stable version.*
+
 ### client.getBrowsers( callback )
 
 Gets the list of available browsers.
@@ -75,6 +77,21 @@ Gets the status of all workers.
 
 * `callback` (`function( error, workers )`): A callback to invoke when the API call is complete.
   * `workers`: An array of objects containing with `id`, `browser`, and `status` properties.
+
+### client.getLatest( browser, callback )
+
+Gets the latest version of a browser.
+
+* `browser`: Which browser to get the latest version for.
+* `callback` (`function( error, version )`): A callback to invoke when the version is determined.
+  * `version`: The latest version of the browser.
+
+### client.getLatest( callback )
+
+Gets the latest version of all browsers.
+
+* `callback` (`function( error, versions )`): A callback to invoke when the versions are determined.
+  * `versions`: An hash of browser names and versions.
 
 ## License
 
