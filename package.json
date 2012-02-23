@@ -13,5 +13,5 @@
   },
   "dependencies": {},
   "devDependencies": {},
-  "main": "browserstack.js"
+  "main": "lib/browserstack.js"
 }
