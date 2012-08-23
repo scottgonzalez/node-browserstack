@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/scottgonzalez/node-browserstack.png)](http://travis-ci.org/scottgonzalez/node-browserstack)
 # node-browserstack
 
 A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [API](https://github.com/browserstack/api).
