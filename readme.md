@@ -23,6 +23,21 @@ client.getBrowsers(function( error, browsers ) {
 });
 ```
 
+To point the client to a different Browserstack compatible API server initialize the client with a `target` object
+containing the `host` (default: `api.browserstack.com`) and `port` (default: `80`) properties:
+
+```javascript
+var BrowserStack = require( "browserstack" );
+var client = BrowserStack.createClient({
+	username: "foo",
+	password: "p455w0rd!!1",
+	target : {
+	  host: 'localhost',
+	  port: 8080
+	}
+});
+```
+
 ## API
 
 ### browser objects
