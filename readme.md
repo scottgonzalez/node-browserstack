@@ -55,6 +55,8 @@ Creates a new client instance.
   * `username`: The username for the BrowserStack account.
   * `password`: The password for the BrowserStack account.
   * `version` (optional; default: `2`): Which version of the BrowserStack API to use.
+  * `server` (optional; default: `{ host : "api.browserstack.com", port : 80 }`):
+  An object containing `host` and `port` to connect to a different browserstack API compatible service.
 
 ### client.getBrowsers( callback )
 
