@@ -11,9 +11,13 @@
   "engines": {
     "node": ">=0.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "1.x",
+    "async": "0.1.x"
+  },
   "devDependencies": {
     "grunt": "0.3.x"
   },
-  "main": "lib/browserstack.js"
+  "main": "lib/browserstack.js",
+  "bin": "bin/cli.js"
 }
