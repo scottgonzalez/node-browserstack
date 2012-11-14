@@ -93,7 +93,7 @@ function createClient(settings) {
 cmd.version('0.1.0')
 .option('-u, --user <user:password>', 'Launch authentication username:password')
 .option('-t, --timeout <seconds>', "Launch duration after which browsers exit")
-.option('--attach', "Attach process to remote browser.")
+.option('--attach', "Attach process to remote browser.");
 
 // ### Command: launch
 cmd.command('launch <browser> <url>')
@@ -171,6 +171,10 @@ cmd.command('browsers')
 
 cmd.parse(process.argv);
 
+// Show help if no arguments were passed.
+if(!cmd.args.length) {
+	cmd.outputHelp();
+}
 
 
 // ## Termination
