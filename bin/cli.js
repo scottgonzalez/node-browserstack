@@ -196,8 +196,8 @@ function attach(cleanup) {
 		// Allow process to die
 		process.stdin.pause();
 		cleanup();
-	}
-};
+	};
+}
 
 // Try to cleanup before exit
 function niceExit() {
@@ -205,7 +205,7 @@ function niceExit() {
 		onExit();
 		onExit = null;
 	}
-};
+}
 
 // Handle exiting
 process.on('SIGINT', niceExit);
