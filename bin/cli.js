@@ -169,6 +169,11 @@ cmd.command('browsers')
 	});
 });
 
+cmd.command('*')
+.action(function(unknown) {
+	exitIfError({message: "Unknown command '"+unknown+"'."});
+});
+
 cmd.parse(process.argv);
 
 // Show help if no arguments were passed.
