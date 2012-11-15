@@ -114,7 +114,7 @@ cmd.command('launch <browser> <url>')
 	bs.createWorker(options, function(err, worker) {
 		exitIfError(err);
 
-		console.log('Launched ' + browserVer + ' at ' + url);
+		console.log('Launched ' + browserVer + ' (id: ' + worker.id + ') at ' + url);
 
 		if(cmd.attach) {
 			attach(function() {
