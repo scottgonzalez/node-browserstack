@@ -186,6 +186,8 @@ function exitIfError(err) {
 	}
 }
 
+var onExit;
+
 // The cleanup work assigned by a command
 function attach(cleanup) {
 	// Keep this process alive
@@ -196,8 +198,6 @@ function attach(cleanup) {
 		cleanup();
 	}
 };
-
-var onExit;
 
 // Try to cleanup before exit
 function niceExit() {
