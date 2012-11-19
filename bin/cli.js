@@ -6,6 +6,8 @@ var path = require('path');
 var cmd = require('commander');
 var async = require('async');
 
+// Indefinite timeout. We use one day because browserstack cleans up their browsers once a day.
+var FOREVER = 60 * 60 * 24;
 
 // ## Helpers
 function extend( a, b ) {
@@ -108,7 +110,7 @@ cmd.command('launch <browser> <url>')
 
 	options.timeout =
 		cmd.timeout ? cmd.timeout :
-		cmd.attach  ? 0 :
+		cmd.attach  ? FOREVER :
 		/* else */    30;
 
 	bs.createWorker(options, function(err, worker) {
