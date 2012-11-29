@@ -50,10 +50,10 @@ function parseUser(str) {
 
 // Kill a running browser
 function killBrowser(bs, id) {
-	console.log('Killing browser...');
+	console.log('Killing worker ' + id);
 	bs.terminateWorker(id, function(err, results) {
 		exitIfError(err);
-		console.log('...done.');
+		console.log('Done.');
 	});
 }
 
@@ -69,7 +69,7 @@ try {
 // Create a browserstack client.
 function createClient(settings) {
 	settings = settings || {};
-	settings.version = settings.version || 1;
+	settings.version = settings.version || 2;
 
 	// Get authentication data
 	var auth;
@@ -93,7 +93,8 @@ function createClient(settings) {
 
 // ## CLI
 cmd.version('0.1.0')
-.option('-u, --user <user:password>', 'Launch authentication username:password')
+.option('-u, --user <user:password>', 'Browserstack authentication')
+.option('--os', 'The os of the browser or device. Defaults to win.')
 .option('-t, --timeout <seconds>', "Launch duration after which browsers exit")
 .option('--attach', "Attach process to remote browser.");
 
@@ -104,19 +105,17 @@ cmd.command('launch <browser> <url>')
 
 	var options = parseBrowser(browserVer);
 	options.url = url;
-	options.timeout = cmd.timeout;
+	options.timeout = cmd.timeout == "0" || cmd.attach ? FOREVER : cmd.timeout || 30;
+	options.os = cmd.os || 'win';
 
 	var bs = createClient();
 
-	options.timeout =
-		cmd.timeout ? cmd.timeout :
-		cmd.attach  ? FOREVER :
-		/* else */    30;
+	console.log('Launching ' + browserVer + '...');
 
 	bs.createWorker(options, function(err, worker) {
 		exitIfError(err);
 
-		console.log('Launched ' + browserVer + ' (id: ' + worker.id + ') at ' + url);
+		console.log('Worker ' + worker.id + ' was created.');
 
 		if(cmd.attach) {
 			attach(function() {
@@ -135,7 +134,7 @@ cmd.command('kill <id>')
 		killBrowser(bs, id);
 
 	} else {
-		console.log('Killing all workers...');
+		console.log('Killing all workers.');
 		bs.getWorkers(function(err, workers) {
 			exitIfError(err);
 
@@ -143,7 +142,7 @@ cmd.command('kill <id>')
 				bs.terminateWorker(worker.id, cb);
 
 			}, function() {
-				console.log('...done');
+				console.log('Done.');
 			});
 		});
 	}
@@ -165,9 +164,7 @@ cmd.command('browsers')
 .action(function() {
 	createClient().getBrowsers(function(err, result) {
 		exitIfError(err);
-		result.forEach(function(browser) {
-			console.log(browser.browser + ":" + browser.version);
-		});
+		console.log(result);
 	});
 });
 

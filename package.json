@@ -19,5 +19,7 @@
     "grunt": "0.3.x"
   },
   "main": "lib/browserstack.js",
-  "bin": "bin/cli.js"
+  "bin": {
+    "browserstack": "bin/cli.js"
+  }
 }
