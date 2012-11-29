@@ -96,7 +96,9 @@ cmd.version('0.1.0')
 .option('-u, --user <user:password>', 'Browserstack authentication')
 .option('--os', 'The os of the browser or device. Defaults to win.')
 .option('-t, --timeout <seconds>', "Launch duration after which browsers exit")
-.option('--attach', "Attach process to remote browser.");
+.option('--attach', "Attach process to remote browser.")
+.option('-k, --key', "Tunnling key.")
+.option('--ssl', "ssl flag for tunnel.");
 
 // ### Command: launch
 cmd.command('launch <browser> <url>')
@@ -165,6 +167,26 @@ cmd.command('browsers')
 	createClient().getBrowsers(function(err, result) {
 		exitIfError(err);
 		console.log(result);
+	});
+});
+
+cmd.command('tunnel <host:port>')
+.description('Create a browserstack tunnel')
+.action(function(hostPort) {
+	var host = parsePair(hostPort, 'name', ':', 'port');
+	var key = cmd.key || config.key;
+	if(!key) {
+		console.error('Browserstack tunnel key required. Use option "--key" or put a "key" in ' + CONFIG_FILE);
+		process.exit(1);
+	}
+	var tunnel = browserstack.createTunnel(key, host.name, host.port, cmd.ssl);
+
+	tunnel.on('exit', function() {
+		process.exit(1);
+	});
+
+	attach(function() {
+		tunnel.kill('SIGTERM');
 	});
 });
 
