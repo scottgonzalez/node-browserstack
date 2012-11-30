@@ -236,4 +236,5 @@ function niceExit() {
 // Handle exiting
 process.on('SIGINT', niceExit);
 process.on('SIGTERM', niceExit);
+process.on('SIGHUP', niceExit);
 process.on('exit', niceExit);
