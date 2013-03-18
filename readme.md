@@ -30,14 +30,18 @@ client.getBrowsers(function( error, browsers ) {
 A common pattern in the API is a "browser object" which is just a plain object with the following properties:
 
 * `os`: The operating system.
+* `os_version`: The operating system or device version.
 * `browser`: The browser name.
+* `browser_version`: The browser version (`null` for mobile devices)
 * `device`: The device name.
-* `version`: The browser or device version.
 
 A browser object may only have one of `browser` or `device` set; which property is set will depend on `os`.
 
 *V1 does not support multiple operating systems.
 As such, there is no `os` version, and browser objects will always use `browser`.*
+
+*Multiple OS versions are not supported prior to V3. In V1 and V2 `os_version` and `browser_version` are not present, and
+`version` is used for browser or device version.*
 
 ### worker objects
 
@@ -70,8 +74,10 @@ Creates a worker.
 
 * `settings`: A hash of settings for the worker (an extended [browser object](#browser-objects)).
   * `os`: Which OS to use for the new worker.
+  * `os_version`: Which OS version to use (see note above about `os_version` pre-V3)
   * `browser`/`device`: Which browser/device to use in the new worker. Which property to use depends on the OS.
-  * `version`: Which version of the specified browser to use.
+  * `browser_version`: Which version of the specified browser to use (for V3).
+  * `version`: Which version of the specified browser to use (for V1 or v2).
   * `url` (optional): Which URL to navigate to upon creation.
   * `timeout` (optional): Maximum life of the worker (in seconds). Use 0 for "forever" (BrowserStack will kill the worker after 1,800 seconds).
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
