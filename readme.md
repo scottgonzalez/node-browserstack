@@ -4,8 +4,26 @@ A node.js JavaScript client for working with [BrowserStack](http://browserstack.
 
 ## Installation
 
+*Note that this fork adds support for BrowserStack API v3, and is forked from the main repo at [https://github.com/scottgonzalez/node-browserstack](https://github.com/scottgonzalez/node-browserstack)*
+
+Installation instructions require install grom Github until these changes are merged into the main repo above.
+
 ```
-npm install browserstack
+npm install git://github.com/ably-forks/node-browserstack.git
+```
+
+or add the following to your package.json file
+
+```javascript
+{
+  ...
+  "dependencies": {
+    ...
+    "browserstack": "git://github.com/ably-forks/node-browserstack.git"
+    ...
+  },
+  ...
+}
 ```
 
 ## Usage
