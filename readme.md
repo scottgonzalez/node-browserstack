@@ -4,8 +4,24 @@ A node.js JavaScript client for working with [BrowserStack](http://browserstack.
 
 ## Installation
 
+Installation instructions require install grom Github until these changes are merged into the main repo above.
+
 ```
-npm install browserstack
+npm install node-browserstack
+```
+
+or add the following to your package.json file
+
+```javascript
+{
+  ...
+  "dependencies": {
+    ...
+    "node-browserstack": "0.x"
+    ...
+  },
+  ...
+}
 ```
 
 ## Usage
@@ -13,13 +29,13 @@ npm install browserstack
 ```javascript
 var BrowserStack = require( "browserstack" );
 var client = BrowserStack.createClient({
-	username: "foo",
-	password: "p455w0rd!!1"
+  username: "foo",
+  password: "p455w0rd!!1"
 });
 
 client.getBrowsers(function( error, browsers ) {
-	console.log( "The following browsers are available for testing" );
-	console.log( browsers );
+  console.log( "The following browsers are available for testing" );
+  console.log( browsers );
 });
 ```
 
