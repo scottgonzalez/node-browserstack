@@ -102,6 +102,13 @@ Gets the status of all workers.
 * `callback` (`function( error, workers )`): A callback to invoke when the API call is complete.
   * `workers`: An array of [worker objects](#worker-objects).
 
+### client.takeScreenshot( id, callback )
+
+Take a screenshot at current state of worker.
+
+* `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
+  * `data`: An object with a `url` property having the public url for the screenshot.
+
 ### client.getLatest( browser, callback )
 
 Gets the latest version of a browser.
