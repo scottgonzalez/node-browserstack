@@ -25,19 +25,19 @@ client.getBrowsers(function( error, browsers ) {
 
 ## API
 
+*Note: The API documented here is for the latest supported version (v3). For earlier versions, please see [the wiki](https://github.com/scottgonzalez/node-browserstack/wiki/API).*
+
 ### browser objects
 
 A common pattern in the API is a "browser object" which is just a plain object with the following properties:
 
 * `os`: The operating system.
+* `os_version`: The operating system version.
 * `browser`: The browser name.
+* `browser_version`: The browser version.
 * `device`: The device name.
-* `version`: The browser or device version.
 
 A browser object may only have one of `browser` or `device` set; which property is set will depend on `os`.
-
-*V1 does not support multiple operating systems.
-As such, there is no `os` version, and browser objects will always use `browser`.*
 
 ### worker objects
 
@@ -54,7 +54,7 @@ Creates a new client instance.
 * `settings`: A hash of settings that apply to all requests for the new client.
   * `username`: The username for the BrowserStack account.
   * `password`: The password for the BrowserStack account.
-  * `version` (optional; default: `2`): Which version of the BrowserStack API to use.
+  * `version` (optional; default: `3`): Which version of the BrowserStack API to use.
   * `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
 
 ### client.getBrowsers( callback )
@@ -69,15 +69,17 @@ Gets the list of available browsers.
 Creates a worker.
 
 * `settings`: A hash of settings for the worker (an extended [browser object](#browser-objects)).
-  * `os`: Which OS to use for the new worker.
-  * `browser`/`device`: Which browser/device to use in the new worker. Which property to use depends on the OS.
-  * `version`: Which version of the specified browser to use.
+  * `os`: See [browser object](#browser-objects) for details.
+  * `os_version`: See [browser object](#browser-objects) for details.
+  * `browser`: See [browser object](#browser-objects) for details.
+  * `browser_version`: See [browser object](#browser-objects) for details.
+  * `device`: See [browser object](#browser-objects) for details.
   * `url` (optional): Which URL to navigate to upon creation.
   * `timeout` (optional): Maximum life of the worker (in seconds). Use 0 for "forever" (BrowserStack will kill the worker after 1,800 seconds).
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
   * `worker` A [worker object](#worker-objects).
 
-*Note: A special value of "latest" is supported for `version`, which will use the latest stable version.*
+*Note: A special value of `"latest"` is supported for `browser_version`, which will use the latest stable version.*
 
 ### client.getWorker( id, callback )
 
@@ -106,9 +108,11 @@ Gets the status of all workers.
 
 Gets the latest version of a browser.
 
-* `browser`: Which browser to get the latest version for.
+* `browser`: Which browser to get the latest version for. See [browser object](#browser-objects) for details.
 * `callback` (`function( error, version )`): A callback to invoke when the version is determined.
   * `version`: The latest version of the browser.
+
+*Note: Since mobile devices do not have version numbers, there is no latest version.*
 
 ### client.getLatest( callback )
 
@@ -119,4 +123,4 @@ Gets the latest version of all browsers.
 
 ## License
 
-node-browserstack is licensed under the MIT license.
+Copyright 2013 Scott González. Released under the terms of the MIT license.
