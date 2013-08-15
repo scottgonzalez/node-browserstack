@@ -123,7 +123,7 @@ Gets the latest version of all browsers.
 
 ### client.getApiStatus( callback )
 
-* `callback` (`function( error, versions )`): A callback to invoke when the versions are determined.
+* `callback` (`function( error, status )`): A callback to invoke when the status object is ready.
   * `used_time`: Time used so far this month in seconds
   * `total_available_time`: Total available time in seconds
   * `running_windows_sessions`: # of windows sessions running
