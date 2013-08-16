@@ -121,6 +121,16 @@ Gets the latest version of all browsers.
 * `callback` (`function( error, versions )`): A callback to invoke when the versions are determined.
   * `versions`: A hash of browser names and versions.
 
+### client.getApiStatus( callback )
+
+* `callback` (`function( error, status )`): A callback to invoke when the status object is ready.
+  * `used_time`: Time used so far this month in seconds
+  * `total_available_time`: Total available time in seconds
+  * `running_windows_sessions`: # of windows sessions running
+  * `windows_sessions_limit`: # of allowable concurrent sessions in Windows
+  * `running_mac_sessions`: # of Mac sessions running
+  * `mac_sessions_limit`: # of allowable concurrent Mac sessions
+
 ## License
 
 Copyright 2013 Scott González. Released under the terms of the MIT license.
