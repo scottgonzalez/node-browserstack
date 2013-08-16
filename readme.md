@@ -125,7 +125,7 @@ Gets the latest version of all browsers.
 
 * `callback` (`function( error, status )`): A callback to invoke when the status is determined.
   * `used_time`: Time used so far this month, in seconds.
-  * `total_available_time`: Total available time, in seconds.
+  * `total_available_time`: Total available time, in seconds. Paid plans have unlimited API time and will receive the string `"Unlimited Testing Time"` instead of a number.
   * `running_sessions`: Number of running sessions.
   * `sessions_limit`: Number of allowable concurrent sessions.
 
