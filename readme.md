@@ -140,7 +140,7 @@ Gets the latest version of all browsers.
 
 ## License
 
-Copyright 2013 Scott González. Released under the terms of the MIT license.
+Copyright 2014 Scott González. Released under the terms of the MIT license.
 
 ---
 
