@@ -97,10 +97,10 @@ Change the URL of a worker.
 
 * `id`: The id of the worker.
 * `options`: Configuration for the URL change.
-  * `url`: The new URL to set, required.
-  * `timeout`: Increase the worker's timeout, optional.
+  * `url`: The new URL to set.
+  * `timeout` (optional): Set a new timeout for this worker, see [createWorker](#client.CreateWorker) for details.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
-  * `data`: An object with a `message`, confirming the URL change
+  * `data`: An object with a `message`, confirming the URL change.
 
 ### client.terminateWorker( id, callback )
 
