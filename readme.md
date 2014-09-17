@@ -91,6 +91,17 @@ Gets the status of a worker.
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
   * `worker`: A [worker object](#worker-objects).
 
+### client.changeUrl( id, options, callback )
+
+Change the URL of a worker.
+
+* `id`: The id of the worker.
+* `options`: Configuration for the URL change.
+  * `url`: The new URL to set.
+  * `timeout` (optional): Set a new timeout for this worker, see [createWorker](#client.CreateWorker) for details.
+* `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
+  * `data`: An object with a `message`, confirming the URL change.
+
 ### client.terminateWorker( id, callback )
 
 Terminates an active worker.
