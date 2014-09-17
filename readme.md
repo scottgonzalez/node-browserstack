@@ -77,7 +77,10 @@ Creates a worker.
   * `browser_version`: See [browser object](#browser-objects) for details.
   * `device`: See [browser object](#browser-objects) for details.
   * `url` (optional): Which URL to navigate to upon creation.
-  * `timeout` (optional): Maximum life of the worker (in seconds). Use 0 for "forever" (BrowserStack will kill the worker after 1,800 seconds).
+  * `timeout` (optional): Maximum life of the worker (in seconds). Maximum value of `3600`. Specifying `0` will use the default of `300`.
+  * `name` (optional): Provide a name for the worker.
+  * `build` (optional): Group workers into a build.
+  * `project` (optional): Provide the project the worker belongs to.
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
   * `worker` A [worker object](#worker-objects).
 
