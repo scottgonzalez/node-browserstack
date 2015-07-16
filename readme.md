@@ -2,7 +2,7 @@
 
 A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [API](https://github.com/browserstack/api).
 
-Support this project by [donating on Gittip](https://www.gittip.com/scottgonzalez/).
+Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
 
 ## Installation
 
@@ -158,4 +158,4 @@ Copyright 2014 Scott González. Released under the terms of the MIT license.
 
 ---
 
-Support this project by [donating on Gittip](https://www.gittip.com/scottgonzalez/).
+Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
