@@ -27,7 +27,7 @@ client.getBrowsers(function( error, browsers ) {
 
 ## API
 
-*Note: The API documented here is for the latest supported version (v3). For earlier versions, please see [the wiki](https://github.com/scottgonzalez/node-browserstack/wiki/API).*
+*Note: The API documented here is for the latest supported version (v4). For earlier versions, please see [the wiki](https://github.com/scottgonzalez/node-browserstack/wiki/API).*
 
 ### browser objects
 
@@ -56,7 +56,7 @@ Creates a new client instance.
 * `settings`: A hash of settings that apply to all requests for the new client.
   * `username`: The username for the BrowserStack account.
   * `password`: The password for the BrowserStack account.
-  * `version` (optional; default: `3`): Which version of the BrowserStack API to use.
+  * `version` (optional; default: `4`): Which version of the BrowserStack API to use.
   * `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
 
 ### client.getBrowsers( callback )
@@ -77,7 +77,7 @@ Creates a worker.
   * `browser_version`: See [browser object](#browser-objects) for details.
   * `device`: See [browser object](#browser-objects) for details.
   * `url` (optional): Which URL to navigate to upon creation.
-  * `timeout` (optional): Maximum life of the worker (in seconds). Maximum value of `3600`. Specifying `0` will use the default of `300`.
+  * `timeout` (optional): Maximum life of the worker (in seconds). Maximum value of `1800`. Specifying `0` will use the default of `300`.
   * `name` (optional): Provide a name for the worker.
   * `build` (optional): Group workers into a build.
   * `project` (optional): Provide the project the worker belongs to.
