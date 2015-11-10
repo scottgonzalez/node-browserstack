@@ -60,7 +60,7 @@ Worker objects are extended [browser objects](#browser-objects) which contain th
 
 * `id`: The worker id.
 * `status`: A string representing the current status of the worker.
-* Possible statuses: `"running"`, `"queue"`.
+  * Possible statuses: `"running"`, `"queue"`.
 
 #### screenshot objects
 
@@ -84,35 +84,35 @@ It is a plain object with properties defined on [BrowserStack's Screenshot API r
 Creates a new client instance.
 
 * `settings`: A hash of settings that apply to all requests for the new client.
-* `username`: The username for the BrowserStack account.
-* `password`: The password for the BrowserStack account.
-* `version` (optional; default: `4`): Which version of the BrowserStack API to use.
-* `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
+  * `username`: The username for the BrowserStack account.
+  * `password`: The password for the BrowserStack account.
+  * `version` (optional; default: `4`): Which version of the BrowserStack API to use.
+  * `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
 
 #### client.getBrowsers( callback )
 
 Gets the list of available browsers.
 
 * `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
-* `browsers`: An array of [browser objects](#browser-objects).
+  * `browsers`: An array of [browser objects](#browser-objects).
 
 #### client.createWorker( settings, callback )
 
 Creates a worker.
 
 * `settings`: A hash of settings for the worker (an extended [browser object](#browser-objects)).
-* `os`: See [browser object](#browser-objects) for details.
-* `os_version`: See [browser object](#browser-objects) for details.
-* `browser`: See [browser object](#browser-objects) for details.
-* `browser_version`: See [browser object](#browser-objects) for details.
-* `device`: See [browser object](#browser-objects) for details.
-* `url` (optional): Which URL to navigate to upon creation.
-* `timeout` (optional): Maximum life of the worker (in seconds). Maximum value of `1800`. Specifying `0` will use the default of `300`.
-* `name` (optional): Provide a name for the worker.
-* `build` (optional): Group workers into a build.
-* `project` (optional): Provide the project the worker belongs to.
+  * `os`: See [browser object](#browser-objects) for details.
+  * `os_version`: See [browser object](#browser-objects) for details.
+  * `browser`: See [browser object](#browser-objects) for details.
+  * `browser_version`: See [browser object](#browser-objects) for details.
+  * `device`: See [browser object](#browser-objects) for details.
+  * `url` (optional): Which URL to navigate to upon creation.
+  * `timeout` (optional): Maximum life of the worker (in seconds). Maximum value of `1800`. Specifying `0` will use the default of `300`.
+  * `name` (optional): Provide a name for the worker.
+  * `build` (optional): Group workers into a build.
+  * `project` (optional): Provide the project the worker belongs to.
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
-* `worker` A [worker object](#worker-objects).
+  * `worker` A [worker object](#worker-objects).
 
 *Note: A special value of `"latest"` is supported for `browser_version`, which will use the latest stable version.*
 
@@ -122,7 +122,7 @@ Gets the status of a worker.
 
 * `id`: The id of the worker.
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
-* `worker`: A [worker object](#worker-objects).
+  * `worker`: A [worker object](#worker-objects).
 
 #### client.changeUrl( id, options, callback )
 
@@ -130,10 +130,10 @@ Change the URL of a worker.
 
 * `id`: The id of the worker.
 * `options`: Configuration for the URL change.
-* `url`: The new URL to set.
-* `timeout` (optional): Set a new timeout for this worker, see [createWorker](#client.CreateWorker) for details.
+  * `url`: The new URL to set.
+  * `timeout` (optional): Set a new timeout for this worker, see [createWorker](#client.CreateWorker) for details.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
-* `data`: An object with a `message`, confirming the URL change.
+  * `data`: An object with a `message`, confirming the URL change.
 
 #### client.terminateWorker( id, callback )
 
@@ -141,21 +141,21 @@ Terminates an active worker.
 
 * `id`: The id of the worker to terminate.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
-* `data`: An object with a `time` property indicating how long the worker was alive.
+  * `data`: An object with a `time` property indicating how long the worker was alive.
 
 #### client.getWorkers( callback )
 
 Gets the status of all workers.
 
 * `callback` (`function( error, workers )`): A callback to invoke when the API call is complete.
-* `workers`: An array of [worker objects](#worker-objects).
+  * `workers`: An array of [worker objects](#worker-objects).
 
 #### client.takeScreenshot( id, callback )
 
 Take a screenshot at current state of worker.
 
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
-* `data`: An object with a `url` property having the public url for the screenshot.
+  * `data`: An object with a `url` property having the public url for the screenshot.
 
 #### client.getLatest( browser, callback )
 
@@ -163,7 +163,7 @@ Gets the latest version of a browser.
 
 * `browser`: Which browser to get the latest version for. See [browser object](#browser-objects) for details.
 * `callback` (`function( error, version )`): A callback to invoke when the version is determined.
-* `version`: The latest version of the browser.
+  * `version`: The latest version of the browser.
 
 *Note: Since mobile devices do not have version numbers, there is no latest version.*
 
@@ -172,15 +172,15 @@ Gets the latest version of a browser.
 Gets the latest version of all browsers.
 
 * `callback` (`function( error, versions )`): A callback to invoke when the versions are determined.
-* `versions`: A hash of browser names and versions.
+  * `versions`: A hash of browser names and versions.
 
 #### client.getApiStatus( callback )
 
 * `callback` (`function( error, status )`): A callback to invoke when the status is determined.
-* `used_time`: Time used so far this month, in seconds.
-* `total_available_time`: Total available time, in seconds. Paid plans have unlimited API time and will receive the string `"Unlimited Testing Time"` instead of a number.
-* `running_sessions`: Number of running sessions.
-* `sessions_limit`: Number of allowable concurrent sessions.
+  * `used_time`: Time used so far this month, in seconds.
+  * `total_available_time`: Total available time, in seconds. Paid plans have unlimited API time and will receive the string `"Unlimited Testing Time"` instead of a number.
+  * `running_sessions`: Number of running sessions.
+  * `sessions_limit`: Number of allowable concurrent sessions.
 
 ### Screenshots API
 
@@ -189,22 +189,22 @@ Gets the latest version of all browsers.
 Creates a new client instance.
 
 * `settings`: A hash of settings that apply to all requests for the new client.
-* `username`: The username for the BrowserStack account.
-* `password`: The password for the BrowserStack account.
+  * `username`: The username for the BrowserStack account.
+  * `password`: The password for the BrowserStack account.
 
 #### screenshotClient.getBrowsers( callback )
 
 Gets the list of available browsers.
 
 * `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
-* `browsers`: An array of [browser objects](#browser-objects).
+  * `browsers`: An array of [browser objects](#browser-objects).
 
 #### screenshotClient.getScreenshot( options, callback )
 
 Runs a job to take screenshots. Options is an object with the following keys :
 
 * `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
-* `browsers`: An array of [browser objects](#browser-objects).
+  * `browsers`: An array of [browser objects](#browser-objects).
 
 ## License
 
