@@ -11,9 +11,7 @@
   "engines": {
     "node": ">=0.4.0"
   },
-  "dependencies": {
-    "extend": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "grunt": "0.3.x"
   },
