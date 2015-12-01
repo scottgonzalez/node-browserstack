@@ -1,6 +1,6 @@
 # node-browserstack
 
-A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [API](https://github.com/browserstack/api).
+A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [REST API](https://github.com/browserstack/api) and [Screenshots API](https://www.browserstack.com/screenshots/api).
 
 Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
 
@@ -14,6 +14,8 @@ npm install browserstack
 
 ```javascript
 var BrowserStack = require( "browserstack" );
+
+// REST API
 var client = BrowserStack.createClient({
 	username: "foo",
 	password: "p455w0rd!!1"
@@ -23,13 +25,24 @@ client.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for testing" );
 	console.log( browsers );
 });
+
+// Screenshots API
+var screenshotClient = BrowserStack.createScreenshotClient({
+    username: "foo",
+    password: "p455w0rd!!1"
+});
+
+screenshotClient.getBrowsers(function( error, browsers ) {
+    console.log( "The following browsers are available for screenshots" );
+    console.log( browsers );
+});
 ```
 
 ## API
 
-*Note: The API documented here is for the latest supported version (v4). For earlier versions, please see [the wiki](https://github.com/scottgonzalez/node-browserstack/wiki/API).*
+### Objects definition
 
-### browser objects
+#### browser objects
 
 A common pattern in the API is a "browser object" which is just a plain object with the following properties:
 
@@ -41,7 +54,7 @@ A common pattern in the API is a "browser object" which is just a plain object w
 
 A browser object may only have one of `browser` or `device` set; which property is set will depend on `os`.
 
-### worker objects
+#### worker objects
 
 Worker objects are extended [browser objects](#browser-objects) which contain the following additional properties:
 
@@ -49,7 +62,24 @@ Worker objects are extended [browser objects](#browser-objects) which contain th
 * `status`: A string representing the current status of the worker.
   * Possible statuses: `"running"`, `"queue"`.
 
-### BrowserStack.createClient( settings )
+#### screenshot objects
+
+A "screenshot object" is a configuration object to run a screenshot job.
+
+It is a plain object with properties defined on [BrowserStack's Screenshot API reference](https://www.browserstack.com/screenshots/api#generate-screenshots).
+
+
+#### job objects
+
+A "job object" is a screenshot job object, commonly used to keep track of the screenshots requested using the [screenshot object](#screenshot-objects). They may also be displayed in the web interface on BrowserStack website.
+
+It is a plain object with properties defined on [BrowserStack's Screenshot API reference](https://www.browserstack.com/screenshots/api#screenshots-states).
+
+### REST API v4
+
+*Note: For earlier versions of the API, please see [the wiki](https://github.com/scottgonzalez/node-browserstack/wiki/API).*
+
+#### BrowserStack.createClient( settings )
 
 Creates a new client instance.
 
@@ -59,14 +89,14 @@ Creates a new client instance.
   * `version` (optional; default: `4`): Which version of the BrowserStack API to use.
   * `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
 
-### client.getBrowsers( callback )
+#### client.getBrowsers( callback )
 
 Gets the list of available browsers.
 
 * `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
   * `browsers`: An array of [browser objects](#browser-objects).
 
-### client.createWorker( settings, callback )
+#### client.createWorker( settings, callback )
 
 Creates a worker.
 
@@ -86,7 +116,7 @@ Creates a worker.
 
 *Note: A special value of `"latest"` is supported for `browser_version`, which will use the latest stable version.*
 
-### client.getWorker( id, callback )
+#### client.getWorker( id, callback )
 
 Gets the status of a worker.
 
@@ -94,7 +124,7 @@ Gets the status of a worker.
 * `callback` (`function( error, worker )`): A callback to invoke when the API call is complete.
   * `worker`: A [worker object](#worker-objects).
 
-### client.changeUrl( id, options, callback )
+#### client.changeUrl( id, options, callback )
 
 Change the URL of a worker.
 
@@ -105,7 +135,7 @@ Change the URL of a worker.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
   * `data`: An object with a `message`, confirming the URL change.
 
-### client.terminateWorker( id, callback )
+#### client.terminateWorker( id, callback )
 
 Terminates an active worker.
 
@@ -113,21 +143,21 @@ Terminates an active worker.
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
   * `data`: An object with a `time` property indicating how long the worker was alive.
 
-### client.getWorkers( callback )
+#### client.getWorkers( callback )
 
 Gets the status of all workers.
 
 * `callback` (`function( error, workers )`): A callback to invoke when the API call is complete.
   * `workers`: An array of [worker objects](#worker-objects).
 
-### client.takeScreenshot( id, callback )
+#### client.takeScreenshot( id, callback )
 
 Take a screenshot at current state of worker.
 
 * `callback` (`function( error, data )`): A callback to invoke when the API call is complete.
   * `data`: An object with a `url` property having the public url for the screenshot.
 
-### client.getLatest( browser, callback )
+#### client.getLatest( browser, callback )
 
 Gets the latest version of a browser.
 
@@ -137,20 +167,44 @@ Gets the latest version of a browser.
 
 *Note: Since mobile devices do not have version numbers, there is no latest version.*
 
-### client.getLatest( callback )
+#### client.getLatest( callback )
 
 Gets the latest version of all browsers.
 
 * `callback` (`function( error, versions )`): A callback to invoke when the versions are determined.
   * `versions`: A hash of browser names and versions.
 
-### client.getApiStatus( callback )
+#### client.getApiStatus( callback )
 
 * `callback` (`function( error, status )`): A callback to invoke when the status is determined.
   * `used_time`: Time used so far this month, in seconds.
   * `total_available_time`: Total available time, in seconds. Paid plans have unlimited API time and will receive the string `"Unlimited Testing Time"` instead of a number.
   * `running_sessions`: Number of running sessions.
   * `sessions_limit`: Number of allowable concurrent sessions.
+
+### Screenshots API
+
+#### BrowserStack.createScreenshotClient( settings )
+
+Creates a new client instance.
+
+* `settings`: A hash of settings that apply to all requests for the new client.
+  * `username`: The username for the BrowserStack account.
+  * `password`: The password for the BrowserStack account.
+
+#### screenshotClient.getBrowsers( callback )
+
+Gets the list of available browsers.
+
+* `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
+  * `browsers`: An array of [browser objects](#browser-objects).
+
+#### screenshotClient.getScreenshot( options, callback )
+
+Runs a job to take screenshots. Options is an object with the following keys :
+
+* `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
+  * `browsers`: An array of [browser objects](#browser-objects).
 
 ## License
 
