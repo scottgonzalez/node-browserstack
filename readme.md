@@ -62,18 +62,30 @@ Worker objects are extended [browser objects](#browser-objects) which contain th
 * `status`: A string representing the current status of the worker.
 	* Possible statuses: `"running"`, `"queue"`.
 
-#### screenshot objects
+#### screenshot job objects
 
-A "screenshot object" is a configuration object to run a screenshot job.
+Screenshot job objects are plain objects which contain the following properties:
 
-It is a plain object with properties defined on [BrowserStack's Screenshot API reference](https://www.browserstack.com/screenshots/api#generate-screenshots).
+* `job_id`: The id of the job.
+* `state`: The state of the job.
+* `win_res`: The screen resolution for browsers running on Windows. May be one of: `"1024x768"`, `"1280x1024"`.
+* `mac_res`: The screen resolution for browsers running on Mac OS X. May be one of: `"1024x768"`, `"1280x960"`, `"1280x1024"`, `"1600x1200"`, `"1920x1080"`.
+* `orientation`: The screen orientation for devices. May be one of: `"portrait"`, `"landscape"`.
+* `quality`: The quality of the screenshot. May be one of: `"original"`, `"compressed"`.
+* `wait_time`: The number of seconds to wait before taking the screenshot. May be one of: `2`, `5`, `10`, `15`, `20`, `60`.
+* `local`: Boolean indicating whether a local testing connection should be used.
+* `browsers`: A collection of [browser objects](#browser-objects) indicating which browsers and devices to take screenshots with.
 
+### screenshot state objects
 
-#### job objects
+Screenshot state objects are extended [browser objects](#browser-objects) which contain the following additional properties:
 
-A "job object" is a screenshot job object, commonly used to keep track of the screenshots requested using a [screenshot object](#screenshot-objects). They may also be displayed in the web interface on the BrowserStack website.
-
-It is a plain object with properties defined on [BrowserStack's Screenshot API reference](https://www.browserstack.com/screenshots/api#screenshots-states).
+* `id`: The id of the screenshot object.
+* `state`: The state of the screenshot.
+* `url`: The URL of the page the screenshot was generated from.
+* `thumb_url`: The URL for the screenshot thumbnail.
+* `image_url`: The URL for the full-size screenshot.
+* `created_at`: The timestamp indicating when the screenshot was generated.
 
 ### REST API v4
 
@@ -203,9 +215,16 @@ Gets the list of available browsers.
 
 Creates a job to take screenshots.
 
-* `options`: A hash of settings for the screenshots. See [screenshot objects](#screenshot-objects) for details.
-* `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
-	* `browsers`: An array of [browser objects](#browser-objects).
+* `options`: A hash of settings for the screenshots. See [screenshot job objects](#screenshot-job-objects) for details.
+	* `browsers`: A collection of [browser objects](#browser-objects) indicating which browsers and devices to take screenshots with.
+	* `win_res` (optional): Only required if taking a screenshot on Windows. Defaults to `"1024x768"`.
+	* `mac_res` (optional): Only required if taking a screenshot on Mac OS X. Defaults to "1024x768"`.
+	* `orientation` (optional): Defaults to `"portrait"`.
+	* `quality` (optional): Defaults to `"compressed"`.
+	* `wait_time` (optional): Defaults to `5`.
+	* `local` (optional): Defaults to `false`.
+* `callback` (`function( error, job )`): A callback to invoke when the API call is complete.
+	* `job`: A [screenshot job object](#screenshot-job-objects) containing [screenshot state objects](#screenshot-state-objects) in place of [browser objects](#browser-objects).
 
 #### screenshotClient.getJob( id, callback )
 
@@ -213,7 +232,7 @@ Gets details about the current status of a screenshot job.
 
 * `id`: The id of the job.
 * `callback` (`function( error, job )`): A callback to invoke when the API call is complete.
-	* `job`: A [job object](#job-objects).
+	* `job`: A [screenshot job object](#screenshot-job-objects) containing [screenshot state objects](#screenshot-state-objects) in place of [browser objects](#browser-objects).
 
 ## License
 
