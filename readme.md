@@ -272,10 +272,6 @@ Gets the list of sessions in a specific build.
 
 ***TODO***
 
-#### automateClient.getSessionLogs( buildId, id, callback )
-
-***TODO***
-
 #### automateClient.updateSession( id, options, callback )
 
 ***TODO***
