@@ -13,7 +13,15 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "0.3.x"
+    "jscs": "2.8.0",
+    "jshint": "2.8.0"
   },
-  "main": "lib/browserstack.js"
+  "main": "lib/browserstack.js",
+  "scripts": {
+    "jscs": "jscs lib/*",
+    "jscs-fix": "jscs lib/* --fix",
+    "jshint": "jshint lib/*",
+    "lint": "npm run jscs && npm run jshint",
+    "test": "npm run lint"
+  }
 }
