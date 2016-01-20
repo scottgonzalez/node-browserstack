@@ -13,14 +13,14 @@ npm install browserstack
 ## Usage
 
 ```javascript
-var BrowserStack = require( "browserstack" ),
-	BrowserStackCredentials = {
-		username: "foo",
-		password: "p455w0rd!!1"
-	};
+var BrowserStack = require( "browserstack" );
+var browserStackCredentials = {
+	username: "foo",
+	password: "p455w0rd!!1"
+};
 
 // REST API
-var client = BrowserStack.createClient(BrowserStackCredentials);
+var client = BrowserStack.createClient(browserStackCredentials);
 
 client.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for testing" );
@@ -28,7 +28,7 @@ client.getBrowsers(function( error, browsers ) {
 });
 
 // Automate API
-var automateClient = BrowserStack.createAutomateClient(BrowserStackCredentials);
+var automateClient = BrowserStack.createAutomateClient(browserStackCredentials);
 
 automateClient.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for automated testing" );
@@ -36,7 +36,7 @@ automateClient.getBrowsers(function( error, browsers ) {
 });
 
 // Screenshots API
-var screenshotClient = BrowserStack.createScreenshotClient(BrowserStackCredentials);
+var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
 screenshotClient.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for screenshots" );
