@@ -69,5 +69,6 @@
         "beforeOpeningCurlyBrace": true
     },
     "requireSpacesInsideObjectBrackets": "all",
-    "validateLineBreaks": "LF"
+    "validateLineBreaks": "LF",
+    "validateQuoteMarks": "\""
 }
