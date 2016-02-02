@@ -17,15 +17,17 @@
   "dependencies": {},
   "devDependencies": {
     "jscs": "2.8.0",
-    "jshint": "2.8.0"
+    "jshint": "2.8.0",
+    "mocha": "2.4.5",
+    "should": "8.2.1"
   },
   "main": "lib/browserstack.js",
   "scripts": {
-    "jscs": "jscs lib/*",
-    "jscs-fix": "jscs lib/* --fix",
-    "jshint": "jshint lib/*",
+    "jscs": "jscs lib/* test/*",
+    "jscs-fix": "jscs lib/* test/* --fix",
+    "jshint": "jshint lib/* test/*",
     "lint": "npm run jscs && npm run jshint",
-    "test": "npm run lint"
+    "test": "npm run lint && mocha"
   },
   "keywords": [
     "automation",

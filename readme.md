@@ -356,6 +356,12 @@ Gets details about the current status of a screenshot job.
 * `callback` (`function(error, job)`): A callback to invoke when the API call is complete.
 	* `job`: A [screenshot job object](#screenshot-job-objects) containing [screenshot state objects](#screenshot-state-objects) in place of [browser objects](#browser-objects).
 
+## Tests
+
+To run the full test suite, you must have a BrowserStack account. Run `npm test` with the `BROWSERSTACK_USERNAME` and `BROWSERSTACK_KEY` environment variables set.
+
+To run just the lint checks, run `npm lint`.
+
 ## License
 
 Copyright Scott González. Released under the terms of the MIT license.

@@ -15,7 +15,10 @@
 	"esnext": true,
 
 	"globals": {
+		"afterEach": false,
+		"beforeEach": false,
 		"define": false,
-		"PointerEvent": true
+		"describe": false,
+		"it": false
 	}
 }
