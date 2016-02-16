@@ -18,7 +18,8 @@ var BrowserStack = require( "browserstack" );
 // REST API
 var client = BrowserStack.createClient({
 	username: "foo",
-	password: "p455w0rd!!1"
+	password: "p455w0rd!!1",
+	https_proxy (optional): "http://myproxy.com:1234"
 });
 
 client.getBrowsers(function( error, browsers ) {
