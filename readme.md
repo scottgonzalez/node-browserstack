@@ -16,7 +16,8 @@ npm install browserstack
 var BrowserStack = require("browserstack");
 var browserStackCredentials = {
 	username: "foo",
-	password: "p455w0rd!!1"
+	password: "p455w0rd!!1",
+	https_proxy: "http://optional.proxy:1234"
 };
 
 // REST API
