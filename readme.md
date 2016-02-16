@@ -37,6 +37,7 @@ automateClient.getBrowsers(function(error, browsers) {
 });
 
 // Screenshots API
+
 var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
 screenshotClient.getBrowsers(function(error, browsers) {
@@ -155,6 +156,7 @@ Creates a new client instance.
 	* `password`: The password for the BrowserStack account.
 	* `version` (optional; default: `4`): Which version of the BrowserStack API to use.
 	* `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
+	* `proxy` (optional; default: `null`): A proxy server that should be used for communicating with 'server', e.g. 'proxy: "http://myproxy.com:1234"'
 
 #### client.getBrowsers(callback)
 
