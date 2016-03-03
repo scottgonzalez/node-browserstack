@@ -1,6 +1,6 @@
 # node-browserstack
 
-A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [REST API](https://github.com/browserstack/api) and [Screenshots API](https://www.browserstack.com/screenshots/api).
+A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [REST API](https://github.com/browserstack/api) (*aka* Javascript Testing API), [Automate API](https://www.browserstack.com/automate/rest-api) and [Screenshots API](https://www.browserstack.com/screenshots/api).
 
 Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
 
@@ -14,23 +14,29 @@ npm install browserstack
 
 ```javascript
 var BrowserStack = require( "browserstack" );
-
-// REST API
-var client = BrowserStack.createClient({
+var browserStackCredentials = {
 	username: "foo",
 	password: "p455w0rd!!1"
-});
+};
+
+// REST API
+var client = BrowserStack.createClient(browserStackCredentials);
 
 client.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for testing" );
 	console.log( browsers );
 });
 
-// Screenshots API
-var screenshotClient = BrowserStack.createScreenshotClient({
-	username: "foo",
-	password: "p455w0rd!!1"
+// Automate API
+var automateClient = BrowserStack.createAutomateClient(browserStackCredentials);
+
+automateClient.getBrowsers(function( error, browsers ) {
+	console.log( "The following browsers are available for automated testing" );
+	console.log( browsers );
 });
+
+// Screenshots API
+var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
 screenshotClient.getBrowsers(function( error, browsers ) {
 	console.log( "The following browsers are available for screenshots" );
@@ -44,7 +50,7 @@ screenshotClient.getBrowsers(function( error, browsers ) {
 
 #### browser objects
 
-A common pattern in the API is a "browser object" which is just a plain object with the following properties:
+A common pattern in the APIs is a "browser object" which is just a plain object with the following properties:
 
 * `os`: The operating system.
 * `os_version`: The operating system version.
@@ -61,6 +67,18 @@ Worker objects are extended [browser objects](#browser-objects) which contain th
 * `id`: The worker id.
 * `status`: A string representing the current status of the worker.
 	* Possible statuses: `"running"`, `"queue"`.
+
+#### project objects
+
+	[TODO](https://www.browserstack.com/automate/rest-api#rest-api-projects)
+
+#### build objects
+
+	[TODO](https://www.browserstack.com/automate/rest-api#rest-api-builds)
+
+#### session objects
+
+	[TODO](https://www.browserstack.com/automate/rest-api#rest-api-sessions)
 
 #### screenshot job objects
 
@@ -193,6 +211,70 @@ Gets the latest version of all browsers.
 	* `total_available_time`: Total available time, in seconds. Paid plans have unlimited API time and will receive the string `"Unlimited Testing Time"` instead of a number.
 	* `running_sessions`: Number of running sessions.
 	* `sessions_limit`: Number of allowable concurrent sessions.
+
+### Automate API
+
+#### BrowserStack.createAutomateClient( settings )
+
+Creates a new client instance.
+
+* `settings`: A hash of settings that apply to all requests for the new client.
+	* `username`: The username for the BrowserStack account.
+	* `password`: The password for the BrowserStack account.
+
+#### automateClient.getPlan( callback )
+
+Gets information about your group's Automate plan, including the maximum number of parallel sessions allowed and the number of parallel sessions currently running.
+
+* `callback` (`function( error, plan )`): A callback to invoke when the API call is complete.
+	* `plan`: ***TODO***
+
+#### automateClient.getBrowsers( callback )
+
+Gets the list of available browsers.
+
+* `callback` (`function( error, browsers )`): A callback to invoke when the API call is complete.
+	* `browsers`: An array of [browser objects](#browser-objects).
+
+#### automateClient.getProjects( callback )
+
+Gets the list of projects.
+
+* `callback` (`function( error, projects )`): A callback to invoke when the API call is complete.
+	* `projects`: An array of [project objects](#project-objects).
+
+#### automateClient.getProject( id, callback )
+
+Gets information about a specific project.
+
+* `id`: The ID of the project.
+* `callback` (`function( error, project )`): A callback to invoke when the API call is complete.
+	* `project`: A [project object](#project-objects).
+
+#### automateClient.getBuilds( [options,] callback )
+
+Gets the list of builds.
+
+* `options`: An object containing [search parameters](https://www.browserstack.com/automate/rest-api#rest-api-parameters). (optional)
+* `callback` (`function( error, builds )`): A callback to invoke when the API call is complete.
+	* `builds`: An array of [build objects](#build-objects).
+
+#### automateClient.getSessions( buildId, [options,] callback )
+
+Gets the list of sessions in a specific build.
+
+* `buildId`: The ID of a specific build.
+* `options`: An object containing [search parameters](https://www.browserstack.com/automate/rest-api#rest-api-parameters). (optional)
+* `callback` (`function( error, sessions )`): A callback to invoke when the API call is complete.
+	* `sessions`: An array of [session objects](#session-objects).
+
+#### automateClient.getSession( id, callback )
+
+***TODO***
+
+#### automateClient.updateSession( id, options, callback )
+
+***TODO***
 
 ### Screenshots API
 
