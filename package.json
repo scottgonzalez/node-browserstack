@@ -5,15 +5,15 @@
   "version": "1.3.2",
   "homepage": "https://github.com/scottgonzalez/node-browserstack",
   "author": "Scott González <scott.gonzalez@gmail.com> (http://scottgonzalez.com)",
+  "contributors": [
+    "Simon Tarchichi <kartsims@gmail.com>"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/scottgonzalez/node-browserstack.git"
   },
   "bugs": "https://github.com/scottgonzalez/node-browserstack/issues",
   "licence": "MIT",
-  "engines": {
-    "node": ">=0.4.0"
-  },
   "dependencies": {},
   "devDependencies": {
     "jscs": "2.8.0",
