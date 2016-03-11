@@ -316,6 +316,24 @@ Gets the details for a session.
 * `callback` (`function(error, session)`): A callback to invoke when the API call is complete.
 	* `session`: A [session object](#session-objects).
 
+#### automateClient.updateSession(id, options, callback)
+
+Updates the status of a session.
+
+* `id`: The hashed ID of the session.
+* `options`: An object containing the parameters.
+	* `status`: New status value. [Accepted values](https://www.browserstack.com/automate/rest-api#rest-api-sessions) are `"completed"` or `"error"`.
+* `callback` (`function(error, session)`): A callback to invoke when the API call is complete.
+	* `session`: The updated [session object](#session-objects).
+
+#### automateClient.deleteSession(id, callback)
+
+Updates the status of a session.
+
+* `id`: The hashed ID of the session.
+* `callback` (`function(error, data)`): A callback to invoke when the API call is complete.
+	* `data`: An object with a `message`, confirming the deletion.
+
 ### Screenshots API
 
 #### BrowserStack.createScreenshotClient(settings)
