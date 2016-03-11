@@ -322,13 +322,13 @@ Updates the status of a session.
 
 * `id`: The hashed ID of the session.
 * `options`: An object containing the parameters.
-	* `status`: New status value. [Accepted values](https://www.browserstack.com/automate/rest-api#rest-api-sessions) are `"completed"` or `"error"`.
+	* `status`: New status value. [May be one of](https://www.browserstack.com/automate/rest-api#rest-api-sessions) `"completed"` or `"error"`.
 * `callback` (`function(error, session)`): A callback to invoke when the API call is complete.
 	* `session`: The updated [session object](#session-objects).
 
 #### automateClient.deleteSession(id, callback)
 
-Updates the status of a session.
+Deletes a session.
 
 * `id`: The hashed ID of the session.
 * `callback` (`function(error, data)`): A callback to invoke when the API call is complete.
