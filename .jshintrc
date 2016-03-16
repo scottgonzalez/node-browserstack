@@ -16,6 +16,10 @@
 
 	"globals": {
 		"define": false,
+		"describe": false,
+		"it": false,
+		"beforeEach": false,
+		"afterEach": false,
 		"PointerEvent": true
 	}
 }
