@@ -18,8 +18,7 @@ var BrowserStack = require( "browserstack" );
 // REST API
 var client = BrowserStack.createClient({
 	username: "foo",
-	password: "p455w0rd!!1",
-	proxy (optional): "http://myproxy.com:1234"
+	password: "p455w0rd!!1"
 });
 
 client.getBrowsers(function( error, browsers ) {
@@ -30,8 +29,7 @@ client.getBrowsers(function( error, browsers ) {
 // Screenshots API
 var screenshotClient = BrowserStack.createScreenshotClient({
 	username: "foo",
-	password: "p455w0rd!!1",
-	proxy (optional): "http://myproxy.com:1234"
+	password: "p455w0rd!!1"
 });
 
 screenshotClient.getBrowsers(function( error, browsers ) {
@@ -102,7 +100,7 @@ Creates a new client instance.
 	* `password`: The password for the BrowserStack account.
 	* `version` (optional; default: `4`): Which version of the BrowserStack API to use.
 	* `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
-	* `proxy` (optional; default: `null`): A proxy server that should be used for communicating with 'server', e.g. 'proxy: "http://myproxy.com:1234"'
+	* `proxy` (optional; default: `null`): "http://myproxy.com:1234"
 
 #### client.getBrowsers( callback )
 
