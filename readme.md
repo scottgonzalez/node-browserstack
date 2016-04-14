@@ -16,8 +16,7 @@ npm install browserstack
 var BrowserStack = require("browserstack");
 var browserStackCredentials = {
 	username: "foo",
-	password: "p455w0rd!!1",
-	https_proxy: "http://optional.proxy:1234"
+	password: "p455w0rd!!1"
 };
 
 // REST API
@@ -37,7 +36,6 @@ automateClient.getBrowsers(function(error, browsers) {
 });
 
 // Screenshots API
-
 var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
 screenshotClient.getBrowsers(function(error, browsers) {
@@ -156,7 +154,7 @@ Creates a new client instance.
 	* `password`: The password for the BrowserStack account.
 	* `version` (optional; default: `4`): Which version of the BrowserStack API to use.
 	* `server` (optional; default: `{ host: "api.browserstack.com", port: 80 }`): An object containing `host` and `port` to connect to a different BrowserStack API compatible service.
-	* `proxy` (optional; default: `null`): "http://myproxy.com:1234"
+	* `proxy` (optional; default: `null`): Proxy server supporting HTTPS to be used for connecting to BrowserStack (or `settings.server`). e.g. `"http://proxy.example.com:1234"`
 
 #### client.getBrowsers(callback)
 
@@ -260,6 +258,7 @@ Creates a new client instance.
 * `settings`: A hash of settings that apply to all requests for the new client.
 	* `username`: The username for the BrowserStack account.
 	* `password`: The password for the BrowserStack account.
+	* `proxy` (optional; default: `null`): Proxy server supporting HTTPS to be used for connecting to BrowserStack. e.g. `"http://proxy.example.com:1234"`
 
 #### automateClient.getPlan(callback)
 
@@ -328,6 +327,7 @@ Creates a new client instance.
 * `settings`: A hash of settings that apply to all requests for the new client.
 	* `username`: The username for the BrowserStack account.
 	* `password`: The password for the BrowserStack account.
+	* `proxy` (optional; default: `null`): Proxy server supporting HTTPS to be used for connecting to BrowserStack. e.g. `"http://proxy.example.com:1234"`
 
 #### screenshotClient.getBrowsers(callback)
 
