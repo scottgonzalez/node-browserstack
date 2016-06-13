@@ -178,6 +178,7 @@ Creates a worker.
 	* `name` (optional): Provide a name for the worker.
 	* `build` (optional): Group workers into a build.
 	* `project` (optional): Provide the project the worker belongs to.
+	* `browserstack.video` (optional): Set to false to disable video recording.
 * `callback` (`function(error, worker)`): A callback to invoke when the API call is complete.
 	* `worker` A [worker object](#worker-objects).
 
