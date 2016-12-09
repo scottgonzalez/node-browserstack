@@ -26,6 +26,7 @@
         "allowUrlComments": true,
         "allowRegex": true
     },
+    "requireCamelCaseOrUpperCaseIdentifiers": false,
     "requireCommaBeforeLineBreak": true,
     "requireCurlyBraces": [
         "if",
@@ -41,6 +42,7 @@
     "requireLineFeedAtFileEnd": true,
     "requireOperatorBeforeLineBreak": true,
     "requirePaddingNewLinesBeforeLineComments": true,
+    "requirePaddingNewLinesAfterBlocks": false,
     "requireParenthesesAroundIIFE": true,
     "requireSemicolons": true,
     "requireSpaceAfterBinaryOperators": true,
@@ -68,7 +70,9 @@
     "requireSpacesInFunction": {
         "beforeOpeningCurlyBrace": true
     },
+    "requireTrailingComma": false,
     "requireSpacesInsideObjectBrackets": "all",
+    "validateIndentation": "\t",
     "validateLineBreaks": "LF",
     "validateQuoteMarks": "\""
 }
