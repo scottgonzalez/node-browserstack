@@ -6,39 +6,39 @@ Support this project by [donating on Gratipay](https://gratipay.com/scottgonzale
 
 ## Installation
 
-```
-npm install browserstack
+```bash
+npm install browserstack --save
 ```
 
 ## Usage
 
-```javascript
-var BrowserStack = require("browserstack");
-var browserStackCredentials = {
+```js
+const BrowserStack = require("browserstack");
+const browserStackCredentials = {
 	username: "foo",
 	password: "p455w0rd!!1"
 };
 
 // REST API
-var client = BrowserStack.createClient(browserStackCredentials);
+const client = BrowserStack.createClient(browserStackCredentials);
 
-client.getBrowsers(function(error, browsers) {
+client.getBrowsers((error, browsers) => {
 	console.log("The following browsers are available for testing");
 	console.log(browsers);
 });
 
 // Automate API
-var automateClient = BrowserStack.createAutomateClient(browserStackCredentials);
+const automateClient = BrowserStack.createAutomateClient(browserStackCredentials);
 
-automateClient.getBrowsers(function(error, browsers) {
+automateClient.getBrowsers((error, browsers) => {
 	console.log("The following browsers are available for automated testing");
 	console.log(browsers);
 });
 
 // Screenshots API
-var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
+const screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
-screenshotClient.getBrowsers(function(error, browsers) {
+screenshotClient.getBrowsers((error, browsers) => {
 	console.log("The following browsers are available for screenshots");
 	console.log(browsers);
 });
