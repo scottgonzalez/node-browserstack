@@ -360,6 +360,7 @@ Gets the list of available browsers.
 Creates a job to take screenshots.
 
 * `options`: A hash of settings for the screenshots. See [screenshot job objects](#screenshot-job-objects) for details.
+	* `url`: The URL of the desired page.
 	* `browsers`: A collection of [browser objects](#browser-objects) indicating which browsers and devices to take screenshots with.
 	* `win_res` (optional): Only required if taking a screenshot on Windows. Defaults to `"1024x768"`.
 	* `mac_res` (optional): Only required if taking a screenshot on Mac OS X. Defaults to "1024x768"`.
