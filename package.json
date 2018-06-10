@@ -15,7 +15,7 @@
   "bugs": "https://github.com/scottgonzalez/node-browserstack/issues",
   "licence": "MIT",
   "dependencies": {
-    "https-proxy-agent": "1.0.0"
+    "https-proxy-agent": "^2.2.1"
   },
   "devDependencies": {
     "jscs": "2.8.0",
