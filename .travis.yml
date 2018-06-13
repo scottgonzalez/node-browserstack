@@ -1,8 +1,8 @@
 sudo: false
 language: node_js
 node_js:
-- 'node'
+- node
 env:
   global:
-  - secure: K/sjN0FPNLX2QMIyVJoZ5tk7mU/D0yd0XLEm8M3VEviDq3vWIOKWS8nz63n9kD+ADpn5WBc3HOh1kPzj39oPT8O21gg5P6l08rPLjQEclMdvrNsXfkSobJVQI8rt2vqWyQt4Z7olt+89qExf9XcOG0fvj7UfJvM+CZ0rXxMKjCo=
-  - secure: C5o/6f/98meI5zI7gayvsev0MhMxZ0H/wvOJv960bAOqfjotIRoeBtTEREAPcB8fCTMXLnds5nGgLANxKC3gXdGirKUxX/YJMRPwr0s5skGFLyGR7c0BY3VXRvSBI4UaxSxQGDm+lzUbhDqzyMFpAzTI3/F/DLSWoQgshGzIr3s=
+  - secure: SIxToVbLuI2v0JvDKAFR0oEeRD55KdKe4QN/JOwibUJpQtBjUMbJyvtysTEZMoZtgAy3zlbqdQ5+Zrt3A2yzWghqIx2vsC2EtsXOyjBkbFMYBaZtPWD6iBbsQ2sF5OfvU151eklsccsdMXibLy9wCy1xd3Y8LuD97wR21fOxAkw=
+  - secure: FAEOwVuRIe7hCayMbM15KAvVE6lUHvd+xzi/v3x/CtyttBnXgwKvXAc6pASDEfP/0NPKL9HHrBjvCInyv3SqSdnWChNGCzo44nD8505Ee9GFi/BeY7P2gUICNG8TTVVhnOz/u4PWlWbaxAT9OJxZ2umoAHnRu43vm3dctE+djUU=
