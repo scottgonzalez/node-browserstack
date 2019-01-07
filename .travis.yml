@@ -2,7 +2,3 @@ sudo: false
 language: node_js
 node_js:
 - node
-env:
-  global:
-  - secure: SIxToVbLuI2v0JvDKAFR0oEeRD55KdKe4QN/JOwibUJpQtBjUMbJyvtysTEZMoZtgAy3zlbqdQ5+Zrt3A2yzWghqIx2vsC2EtsXOyjBkbFMYBaZtPWD6iBbsQ2sF5OfvU151eklsccsdMXibLy9wCy1xd3Y8LuD97wR21fOxAkw=
-  - secure: FAEOwVuRIe7hCayMbM15KAvVE6lUHvd+xzi/v3x/CtyttBnXgwKvXAc6pASDEfP/0NPKL9HHrBjvCInyv3SqSdnWChNGCzo44nD8505Ee9GFi/BeY7P2gUICNG8TTVVhnOz/u4PWlWbaxAT9OJxZ2umoAHnRu43vm3dctE+djUU=
