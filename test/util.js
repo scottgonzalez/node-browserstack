@@ -7,8 +7,8 @@ var pollWorkerRetryInterval = 2000;
 
 var encoding = process.env.TRAVIS ? "base64" : "utf8";
 module.exports.browserStack = {
-	username: new Buffer(process.env.BROWSERSTACK_USERNAME || "", encoding).toString(),
-	password: new Buffer(process.env.BROWSERSTACK_KEY || "", encoding).toString()
+	username: Buffer.from(process.env.BROWSERSTACK_USERNAME || "", encoding).toString(),
+	password: Buffer.from(process.env.BROWSERSTACK_KEY || "", encoding).toString()
 };
 
 module.exports.terminateWorkers = function terminateWorkers(client, workers, callback) {
