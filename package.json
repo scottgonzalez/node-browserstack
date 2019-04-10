@@ -13,7 +13,7 @@
     "url": "git://github.com/scottgonzalez/node-browserstack.git"
   },
   "bugs": "https://github.com/scottgonzalez/node-browserstack/issues",
-  "licence": "MIT",
+  "license": "MIT",
   "dependencies": {
     "https-proxy-agent": "^2.2.1"
   },
