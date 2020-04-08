@@ -35,6 +35,15 @@ automateClient.getBrowsers(function(error, browsers) {
 	console.log(browsers);
 });
 
+// App Automate API
+// Show the upload builds for mobile app automation
+var appAutomateClient = BrowserStack.createAppAutomateClient(browserStackCredentials);
+
+appAutomateClient.getBuilds(function(error, builds) {
+	console.log("The following builds are available for app automated testing");
+	console.log(builds);
+});
+
 // Screenshots API
 var screenshotClient = BrowserStack.createScreenshotClient(browserStackCredentials);
 
