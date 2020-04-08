@@ -337,6 +337,86 @@ Deletes a session.
 * `callback` (`function(error, data)`): A callback to invoke when the API call is complete.
 	* `data`: An object with a `message`, confirming the deletion.
 
+### App Automate API
+
+#### BrowserStack.createAppAutomateClient(settings)
+
+Creates a new client instance.
+
+* `settings`: A hash of settings that apply to all requests for the new client.
+	* `username`: The username for the BrowserStack account.
+	* `password`: The password for the BrowserStack account.
+	* `proxy` (optional; default: `null`): Proxy server supporting HTTPS to be used for connecting to BrowserStack. e.g. `"http://proxy.example.com:1234"`
+
+#### automateClient.getPlan(callback)
+
+Gets information about your group's App Automate plan, including the maximum number of parallel sessions allowed and the number of parallel sessions currently running.
+
+* `callback` (`function(error, plan)`): A callback to invoke when the API call is complete.
+	* `plan`: An object with `parallel_sessions_max_allowed`, `parallel_sessions_running`, and `automate_plan` showing the current state of your plan.
+
+#### automateClient.getProjects(callback)
+
+Gets the list of projects.
+
+* `callback` (`function(error, projects)`): A callback to invoke when the API call is complete.
+	* `projects`: An array of [project objects](#project-objects).
+
+#### automateClient.getProject(id, callback)
+
+Gets information about a project.
+
+* `id`: The ID of the project.
+* `callback` (`function(error, project)`): A callback to invoke when the API call is complete.
+	* `project`: A [project object](#project-objects) including an array of [extended build objects](#build-objects).
+
+#### automateClient.getBuilds([options,] callback)
+
+Gets the list of builds.
+
+* `options` (optional): An object containing search parameters.
+	* `limit`: The number of builds to return. Defaults to `10`.
+	* `status`: Filter builds based on status. May be one of `"running"`, `"done"`, `"failed"`, `"timeout"`.
+* `callback` (`function(error, builds)`): A callback to invoke when the API call is complete.
+	* `builds`: An array of [build objects](#build-objects).
+
+#### automateClient.getSessions(buildId, [options,] callback)
+
+Gets the list of sessions in a build.
+
+* `buildId`: The hashed ID of the build.
+* `options` (optional): An object containing search parameters.
+	* `limit`: The number of sessions to return. Defaults to `10`.
+	* `status`: Filter sessions based on status. May be one of `"running"`, `"done"`, `"failed"`.
+* `callback` (`function(error, sessions)`): A callback to invoke when the API call is complete.
+	* `sessions`: An array of [session objects](#session-objects).
+
+#### automateClient.getSession(id, callback)
+
+Gets the details for a session.
+
+* `id`: The hashed ID of the session.
+* `callback` (`function(error, session)`): A callback to invoke when the API call is complete.
+	* `session`: A [session object](#session-objects).
+
+#### automateClient.updateSession(id, options, callback)
+
+Updates the status of a session.
+
+* `id`: The hashed ID of the session.
+* `options`: An object containing the parameters.
+	* `status`: New status value. [May be one of](https://www.browserstack.com/automate/rest-api#rest-api-sessions) `"completed"` or `"error"`.
+* `callback` (`function(error, session)`): A callback to invoke when the API call is complete.
+	* `session`: The updated [session object](#session-objects).
+
+#### automateClient.deleteSession(id, callback)
+
+Deletes a session.
+
+* `id`: The hashed ID of the session.
+* `callback` (`function(error, data)`): A callback to invoke when the API call is complete.
+	* `data`: An object with a `message`, confirming the deletion.
+
 ### Screenshots API
 
 #### BrowserStack.createScreenshotClient(settings)
