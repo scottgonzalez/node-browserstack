@@ -1,8 +1,6 @@
 # node-browserstack
 
-A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [REST API](https://github.com/browserstack/api) (*aka* Javascript Testing API), [Automate API](https://www.browserstack.com/automate/rest-api) and [Screenshots API](https://www.browserstack.com/screenshots/api).
-
-Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
+A node.js JavaScript client for working with [BrowserStack](http://browserstack.com) through its [REST API](https://github.com/browserstack/api) (*aka* Javascript Testing API), [Automate API](https://www.browserstack.com/automate/rest-api), [App Automate API](https://www.browserstack.com/app-automate/rest-api), and [Screenshots API](https://www.browserstack.com/screenshots/api).
 
 ## Installation
 
@@ -476,8 +474,4 @@ To run just the lint checks, run `npm lint`.
 
 ## License
 
-Copyright Scott González. Released under the terms of the MIT license.
-
----
-
-Support this project by [donating on Gratipay](https://gratipay.com/scottgonzalez/).
+Copyright node-browserstack contributors. Released under the terms of the MIT license.
