@@ -60,7 +60,7 @@ BaseClient.prototype.request = function(options, data, fn) {
 				if (res.headers["content-type"].indexOf("json") !== -1) {
 					response = JSON.parse(response);
                     message = response.message;
-                    if (typeof response.errors === 'string') {
+                    if (response.errors && typeof response.errors === 'string') {
                         message += response.errors;
                     } else if (response.errors && response.errors.length) {
 						message += " - " + response.errors.map(function(error) {
