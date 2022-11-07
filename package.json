@@ -18,9 +18,9 @@
     "https-proxy-agent": "^2.2.1"
   },
   "devDependencies": {
-    "jscs": "2.8.0",
-    "jshint": "2.8.0",
-    "mocha": "2.4.5",
+    "jscs": "3.0.7",
+    "jshint": "2.13.5",
+    "mocha": "10.1.0",
     "should": "8.2.1"
   },
   "main": "lib/browserstack.js",
