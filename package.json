@@ -20,7 +20,7 @@
   "devDependencies": {
     "jscs": "2.8.0",
     "jshint": "2.8.0",
-    "mocha": "2.4.5",
+    "mocha": "10.2.0",
     "should": "8.2.1"
   },
   "main": "lib/browserstack.js",
