@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "jscs": "2.8.0",
-    "jshint": "2.8.0",
+    "jshint": "2.13.6",
     "mocha": "10.2.0",
     "should": "8.2.1"
   },
